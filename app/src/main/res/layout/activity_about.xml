@@ -7,37 +7,33 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".O_aplikacjiActivity">
+    tools:context=".AboutActivity">
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="Autorzy:"
-    android:textSize="20dp"
+    android:textSize="30sp"
     android:layout_centerHorizontal="true"
-    android:id="@+id/autorzy"
-    />
+    android:id="@+id/authorsTitle"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Damian Wojda"
-        android:textSize="20sp"
+        android:textAlignment="center"
+        android:text="Damian Wojda \n \n Gasik Kamil \n \n Szuba Kamil"
+        android:textSize="25sp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/autorzy"
-        android:id="@+id/dw"/>
-    <TextView
+        android:layout_below="@+id/authorsTitle"
+        android:id="@+id/autText"
+        android:layout_marginTop="50dp"/>
+
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kamil Gasik"
-        android:textSize="20sp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/dw"
-        android:id="@+id/kg"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Kamil Szuba"
-        android:textSize="20sp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/kg"/>
+        android:text="OK"
+        android:id="@+id/okAboutButton"
+        android:onClick="OnClickOkAbout"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

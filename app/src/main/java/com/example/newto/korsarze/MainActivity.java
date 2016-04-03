@@ -16,13 +16,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickOAplikacji(View view)
     {
-        Intent intent = new Intent(this,O_aplikacjiActivity.class);
+        Intent intent = new Intent(this,AboutActivity.class);
         startActivity(intent);
     }
 
     public void onClickUstwienia(View view)
     {
-        Intent intent = new Intent(this,UstawieniaActivity.class);
+        Intent intent = new Intent(this,SettingsActivity.class);
         startActivity(intent);
     }
 }
