@@ -7,60 +7,60 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.newto.korsarze.MainActivity">
-<ImageView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/witajImage"
-    android:src="@drawable/witaj"
-    android:scaleType="center"
-    android:layout_below="@+id/welcomeText"
-    android:adjustViewBounds="true"
+    tools:context="com.example.newto.korsarze.UstawieniaActivity">
 
-    android:maxHeight="200dp"
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/witajImage"
+        android:src="@drawable/witaj"
+        android:scaleType="center"
+        android:layout_below="@+id/ustawieniaText"
+        android:adjustViewBounds="true"
 
-    android:layout_above="@+id/nowagraButton"
-    android:layout_centerHorizontal="true" />
+        android:maxHeight="200dp"
+
+        android:layout_above="@+id/nowagraButton"
+        android:layout_centerHorizontal="true" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Witaj piracie"
+        android:text="Ustawienia"
         android:layout_centerHorizontal="true"
         android:textSize="26sp"
-        android:id="@+id/welcomeText"/>
+        android:id="@+id/ustawieniaText"/>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/nowa_gra"
-        android:id="@+id/nowagraButton"
-        android:text="Nowa Gra"
+        android:id="@+id/bluetoothButton"
+        android:text="Bluetooth"
+        android:onClick="OnClickBluetooth"
 
         android:layout_marginBottom="15dp"
-        android:layout_above="@+id/ustawieniaButton"
+        android:layout_above="@+id/statsButton"
         android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ustawienia"
-        android:id="@+id/ustawieniaButton"
-        android:onClick="onClickUstwienia"
-        android:text="Ustawienia"
+        android:id="@+id/statsButton"
+        android:onClick="onClickStats"
+        android:text="Ststystyki"
 
 
         android:layout_marginBottom="15dp"
-        android:layout_above="@+id/oautorachButton"
+        android:layout_above="@+id/dataResetButton"
         android:layout_centerHorizontal="true"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/oaplikacji"
-        android:id="@+id/oautorachButton"
-        android:text="O Aplikacji"
+        android:id="@+id/dataResetButton"
+        android:text="Wyczyść dane"
 
         android:layout_alignParentBottom="true"
-        android:onClick="onClickOAplikacji"
+        android:onClick="onClickDataReset"
         android:layout_centerHorizontal="true"/>
-
 
 </RelativeLayout>

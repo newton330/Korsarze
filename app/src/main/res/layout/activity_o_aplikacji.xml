@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.newto.korsarze.O_aplikacji">
+    tools:context=".O_aplikacjiActivity">
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Damian Wojda"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/autorzy"
         android:id="@+id/dw"/>
@@ -29,15 +29,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Kamil Gasik"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/dw"
-        android:id="@+id/kg"/>/>
+        android:id="@+id/kg"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Kamil Szuba"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/kg"/>
 </RelativeLayout>

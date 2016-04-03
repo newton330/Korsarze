@@ -14,8 +14,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void oaplikacji(View view) {
-        Intent intent = new Intent(this,O_aplikacji.class);
+    public void onClickOAplikacji(View view)
+    {
+        Intent intent = new Intent(this,O_aplikacjiActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickUstwienia(View view)
+    {
+        Intent intent = new Intent(this,UstawieniaActivity.class);
         startActivity(intent);
     }
 }

@@ -15,7 +15,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".O_aplikacji"></activity>
+        <activity android:name=".O_aplikacjiActivity" />
+        <activity android:name=".UstawieniaActivity" />
+        <activity android:name=".ConnectActivity" />
+        <activity android:name=".PrepareActivity" />
+        <activity android:name=".BattleActivity" />
+        <activity android:name=".BattleEndActivity" />
+        <activity android:name=".StatsActivity"></activity>
     </application>
 
 </manifest>
