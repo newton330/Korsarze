@@ -26,4 +26,13 @@
         android:id="@+id/prepareText"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/prepareGrid"
+        android:layout_below="@+id/prepareText"
+        android:layout_above="@+id/playButton"/>
+
 </RelativeLayout>

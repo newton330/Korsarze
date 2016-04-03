@@ -8,24 +8,23 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".AboutActivity">
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Autorzy:"
-    android:textSize="30sp"
-    android:layout_centerHorizontal="true"
-    android:id="@+id/authorsTitle"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Autorzy:"
+        android:textSize="30sp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/authorsTitle"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:text="Damian Wojda \n \n Gasik Kamil \n \n Szuba Kamil"
+        android:text="\n \n Damian Wojda \n \n Gasik Kamil \n \n Szuba Kamil \n"
         android:textSize="25sp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/authorsTitle"
-        android:id="@+id/autText"
-        android:layout_marginTop="50dp"/>
+        android:id="@+id/authorsText" />
 
 
     <Button
@@ -36,4 +35,13 @@
         android:onClick="OnClickOkAbout"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/aboutImage"
+        android:layout_above="@+id/okAboutButton"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/authorsText"
+        android:background="#303F9F" />
 </RelativeLayout>

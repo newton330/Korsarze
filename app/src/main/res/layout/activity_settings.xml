@@ -16,7 +16,7 @@
         android:text="Ustawienia"
         android:layout_centerHorizontal="true"
         android:textSize="26sp"
-        android:id="@+id/ustawieniaText"/>
+        android:id="@+id/settingsTitle"/>
 
 
     <Button
@@ -50,6 +50,15 @@
         android:layout_alignParentBottom="true"
         android:onClick="onClickDataReset"
         android:layout_centerHorizontal="true"/>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/settingsImage"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/bluetoothButton"
+        android:layout_below="@+id/settingsTitle"
+        android:background="#303F9F" />
 
 
 </RelativeLayout>

@@ -31,10 +31,10 @@
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/horizontalScrollView"
-        android:layout_below="@+id/fireButton"
+        android:id="@+id/battleScrol"
         android:layout_centerHorizontal="true"
         android:fillViewport="false"
-        android:layout_above="@+id/fireButton" />
+        android:layout_above="@+id/fireButton"
+        android:layout_below="@+id/battle" />
 
 </RelativeLayout>

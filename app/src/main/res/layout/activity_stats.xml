@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
+        android:text="TODO"
         android:id="@+id/statsText"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />

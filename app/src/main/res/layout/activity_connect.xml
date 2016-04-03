@@ -26,4 +26,12 @@
         android:id="@+id/connectText"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bluetoothDeviceList"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/connectButton"
+        android:layout_below="@+id/connectText" />
 </RelativeLayout>
