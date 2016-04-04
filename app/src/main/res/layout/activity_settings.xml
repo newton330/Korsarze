@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/statsButton"
         android:onClick="onClickStats"
-        android:text="Ststystyki"
+        android:text="Statystyki"
 
 
         android:layout_marginBottom="15dp"
