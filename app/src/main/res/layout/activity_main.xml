@@ -50,14 +50,22 @@
         android:onClick="onClickOAplikacji"
         android:layout_centerHorizontal="true"/>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/welcomeImage"
-        android:layout_below="@+id/welcomeText"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/newGameButton"
-        android:background="#303F9F"/>
+    <!--<ImageView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:id="@+id/welcomeImage"-->
+        <!--android:layout_below="@+id/welcomeText"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_above="@+id/newGameButton"-->
+        <!--android:background="#303F9F"/>-->
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/welcomeText"-->
+        <!--android:text=""  -->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:id="@+id/nazwauzytkownika"-->
+        <!--/>-->
 
 
 </RelativeLayout>

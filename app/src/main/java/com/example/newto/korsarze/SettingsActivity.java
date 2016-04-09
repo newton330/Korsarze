@@ -30,4 +30,10 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
 
+    public void OnClickLogin(View view) {
+
+        Intent intent = new Intent(this,LoginActivity.class);
+        startActivity(intent);
+
+    }
 }

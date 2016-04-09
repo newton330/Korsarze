@@ -26,9 +26,10 @@
         android:text="Bluetooth"
         android:onClick="OnClickBluetooth"
 
-        android:layout_marginBottom="15dp"
-        android:layout_above="@+id/statsButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/loginButton"
+
+        android:layout_centerHorizontal="true"
+      />
 
     <Button
         android:layout_width="wrap_content"
@@ -38,27 +39,33 @@
         android:text="Statystyki"
 
 
-        android:layout_marginBottom="15dp"
         android:layout_above="@+id/dataResetButton"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignLeft="@+id/bluetoothButton"
+        android:layout_alignStart="@+id/bluetoothButton" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/dataResetButton"
         android:text="Wyczyść dane"
-
         android:layout_alignParentBottom="true"
         android:onClick="onClickDataReset"
         android:layout_centerHorizontal="true"/>
 
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/settingsImage"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/bluetoothButton"
-        android:layout_below="@+id/settingsTitle"
-        android:background="#303F9F" />
-
+    <!--<ImageView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:id="@+id/settingsImage"-->
+        <!--android:layout_centerHorizontal="false"-->
+        <!--android:layout_above="@+id/bluetoothButton"-->
+        <!--android:layout_below="@+id/settingsTitle"-->
+        <!--android:background="#303F9F" />-->
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Login"
+    android:id="@+id/loginButton"
+    android:layout_above="@+id/statsButton"
+    android:layout_centerHorizontal="true"
+    android:onClick="OnClickLogin"/>
 
 </RelativeLayout>
