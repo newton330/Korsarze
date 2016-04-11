@@ -16,7 +16,8 @@ public class PrepareActivity extends AppCompatActivity {
         setContentView(R.layout.activity_prepare);
 
         GridView gridView = (GridView) findViewById(R.id.prepareGrid);
-        gridView.setAdapter(new ImageAdapter(this));
+        ImageAdapter imageAdapterPlayer = new ImageAdapter(this);
+        gridView.setAdapter(imageAdapterPlayer);
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id){
