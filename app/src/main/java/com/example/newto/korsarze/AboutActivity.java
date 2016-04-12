@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 public class AboutActivity extends AppCompatActivity {
+    //TODO
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
