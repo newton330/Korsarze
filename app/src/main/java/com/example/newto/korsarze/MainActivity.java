@@ -12,13 +12,26 @@ import android.widget.TextView;
 import java.util.jar.Attributes;
 
 public class MainActivity extends AppCompatActivity {
-
+    TextView User;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        User=(TextView) findViewById(R.id.nazwauzytkownika);
+
+        Intent intent =getIntent();
+        String Login;
+        //String Login = intent.getStringExtra("login");
+        SharedPreferences sharedPref =getSharedPreferences("NAME",Context.MODE_PRIVATE);
+        Login=sharedPref.getString("NAME","");
+//logowanie
 
 
+        if(Login==""){
+            User.setText("Zaloguj się!!! ");}
+        else
+            User.setText("Twój login to: "+Login+".");
+//koniec logowania
     }
 
     public void onClickOAplikacji(View view)

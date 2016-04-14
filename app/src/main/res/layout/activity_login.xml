@@ -29,6 +29,7 @@
         android:layout_below="@+id/Podajnick"
         android:layout_centerHorizontal="true"
         android:text="Ok"
+        android:id="@+id/Okbutton"
         android:onClick="OkLogowanie"/>
 
 </RelativeLayout>

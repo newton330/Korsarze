@@ -58,14 +58,14 @@
         <!--android:layout_centerHorizontal="true"-->
         <!--android:layout_above="@+id/newGameButton"-->
         <!--android:background="#303F9F"/>-->
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@id/welcomeText"-->
-        <!--android:text=""  -->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:id="@+id/nazwauzytkownika"-->
-        <!--/>-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/welcomeText"
+        android:text=""
+        android:layout_centerHorizontal="true"
+        android:id="@+id/nazwauzytkownika"
+        />
 
 
 </RelativeLayout>
