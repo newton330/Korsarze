@@ -11,12 +11,14 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 public class PrepareActivity extends AppCompatActivity {
-
+    int clickNumber=0;
+    int map[] = new int[100];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prepare);
-
+        for (int i =0;i<100;i++)
+            map[i]=0;
 
         GridView gridView = (GridView) findViewById(R.id.prepareGrid);
         final ImageAdapter imageAdapterPlayer = new ImageAdapter(this);
@@ -24,7 +26,8 @@ public class PrepareActivity extends AppCompatActivity {
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id){
-                OnWaterClick(v,position);
+                if(Ships(position,imageAdapterPlayer.getItemId(position))==1)
+                    SetShip(v,position);
             }
         });
     }
@@ -36,10 +39,28 @@ public class PrepareActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void OnWaterClick(View v, int position)
+    public void SetShip(View v, int position)
     {
         ImageView imageView = (ImageView) v;
-        imageView.setImageResource(R.drawable.hit);
+        imageView.setImageResource(mThumbIds[map[position]]);
         Toast.makeText(PrepareActivity.this,Integer.toString(position),Toast.LENGTH_SHORT).show();
     }
+    public int Ship4(int position)
+    {
+        clickNumber++;
+        if(clickNumber==3)
+        {
+            return 1;
+        }
+        else
+        return 0;
+    }
+    public int Ships(int position,long ID)
+    {
+        Ship4(position);
+        return 1;
+    }
+    public Integer[] mThumbIds = new Integer[]{
+            R.drawable.water, R.drawable.water, R.drawable.ship, R.drawable.hit, R.drawable.unknown
+    };
 }
