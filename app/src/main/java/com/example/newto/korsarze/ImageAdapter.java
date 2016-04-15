@@ -46,7 +46,7 @@ public class ImageAdapter extends BaseAdapter {
         return imageView;
     }
 
-    public Integer[] mThumbIds = {
-            R.drawable.water,R.drawable.ship,R.drawable.hit,R.drawable.unknown
+    public Integer[] mThumbIds = new Integer[]{
+            R.drawable.water, R.drawable.water, R.drawable.ship, R.drawable.hit, R.drawable.unknown
     };
 }
