@@ -25,7 +25,8 @@
         android:text="Rozstaw swoje statki"
         android:id="@+id/prepareText"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="PrepareHelp"/>
 
     <GridView
         android:layout_width="wrap_content"
@@ -35,8 +36,8 @@
         android:layout_alignParentStart="true"
         android:numColumns="10"
         android:choiceMode="multipleChoice"
-        android:horizontalSpacing="0dp"
-        android:verticalSpacing="0dp"
+        android:horizontalSpacing="3dp"
+        android:verticalSpacing="3dp"
         android:layout_above="@+id/playButton"
         android:layout_below="@+id/prepareText" />
 

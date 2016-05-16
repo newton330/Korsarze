@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         if(Login==""){
             User.setText("Zaloguj się!!! ");}
         else
-            User.setText("Twój login to: "+Login+".");
+            User.setText(""+Login+". Czas zatopić parę statków");
 //koniec logowania
     }
 
@@ -46,11 +46,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void OnClickNewGame(View view)
-    {
-        Intent intent = new Intent(this,ConnectActivity.class);
+    public void OnClickNewGame(View view) {
+        Intent intent = new Intent(this, PrepareActivity.class);////////////zmiana tymczasowa
         startActivity(intent);
+
     }
-
-
 }
