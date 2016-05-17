@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void OnClickNewGame(View view) {
-        Intent intent = new Intent(this, PrepareActivity.class);////////////zmiana tymczasowa
+        Intent intent = new Intent(this, ConnectActivity.class);////////////zmiana tymczasowa
         startActivity(intent);
 
     }

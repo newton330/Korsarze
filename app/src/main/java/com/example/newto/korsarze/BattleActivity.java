@@ -58,25 +58,27 @@ public class BattleActivity extends AppCompatActivity {
 
     public void opponentMove()
     {
-        showShips(v);
+        //showShips(v);
         myTurn=-1;
         infoText.setText("Ruch przeciwnika");
+        int position=10;////////////////////////////////////////////tymczasowo
 ///////////////////////////////////////// Otrzymanie pozycji///////////////////////////////////////////////////////////////////
         if(myMap[position]==2)
         {
 ///////////////////////////////////////// wysłanie trafienia///////////////////////////////////////////////////////////////////
             myMap[position]=3;
             myShipCounter--;
-            ImageView imageView = (ImageView) v;
-            imageView.setImageResource(mThumbIds[opponentMap[position]]);
+            //ImageView imageView = (ImageView) v;
+            //imageView.setImageResource(mThumbIds[opponentMap[position]]);
             if(myShipCounter==0)
                 endActivity(0);
+        }
         else
         {
 ///////////////////////////////////////// wysłanie trafienia///////////////////////////////////////////////////////////////////
             myMap[position] = 1;
-            ImageView imageView = (ImageView) v;
-            imageView.setImageResource(mThumbIds[opponentMap[position]]);
+            //ImageView imageView = (ImageView) v;
+            //imageView.setImageResource(mThumbIds[opponentMap[position]]);
             infoText.setText("Twój ruch");
             myTurn = 1;
         }

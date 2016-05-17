@@ -178,4 +178,5 @@ public class ConnectActivity extends AppCompatActivity {
         unregisterReceiver(bluetoothReceiver);
         bluetoothAdapter.cancelDiscovery();//nie testowane, ale warto żeby było
     }
+
 }

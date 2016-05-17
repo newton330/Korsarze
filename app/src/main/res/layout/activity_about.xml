@@ -34,7 +34,8 @@
         android:id="@+id/okAboutButton"
         android:onClick="OnClickOkAbout"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_toRightOf="@+id/authorsTitle"
+        android:layout_toEndOf="@+id/authorsTitle" />
 
     <ImageView
         android:layout_width="match_parent"
@@ -43,5 +44,18 @@
         android:layout_above="@+id/okAboutButton"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/authorsText"
-        android:background="#303F9F" />
+        android:src="@drawable/flag"
+
+    />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="O obrazach"
+        android:id="@+id/buttonAboutImage"
+        android:onClick="onAboutImageClick"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/authorsText"
+        android:layout_alignStart="@+id/authorsText" />
+
 </RelativeLayout>

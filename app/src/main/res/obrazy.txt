@@ -1,11 +1,5 @@
-Description	
-English: A stereotypical caricature of a pirate.
-Date	March 2006
-Source	SVG version of Image:Piratey.jpg
+Description	: A stereotypical caricature of a pirate.
 Author	Caricature by J.J., SVG file by Gustavb
 
-Description	
-Polski: Flaga pirata Edwarda England
-Date	-
-Source	Own work
+Description	: Flaga pirata Edwarda England
 Author	WarX, edited by Manuel Strehl
