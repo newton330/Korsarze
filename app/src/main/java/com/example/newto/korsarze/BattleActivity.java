@@ -11,6 +11,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.newto.korsarze.bluetooth.BluetoothControl;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
+
 public class BattleActivity extends AppCompatActivity {
     TextView infoText;
     Button buttonText;
@@ -20,7 +27,7 @@ public class BattleActivity extends AppCompatActivity {
     int opponentShipCounter=20;
     int myTurn=0;
     int tarfienie=0;
-
+BluetoothControl bluetoothControl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +36,25 @@ public class BattleActivity extends AppCompatActivity {
         infoText=(TextView) findViewById(R.id.battleInfoText);
         buttonText=(Button) findViewById(R.id.fireButton);
         buttonText.setText("Wyjście");
+       int liczba =  Integer.getInteger("1");
         for (int i =0;i<100;i++)
             opponentMap[i]=4;
+bluetoothControl.write((""position+"").getBytes());
 
-        GridView gridView = (GridView) findViewById(R.id.battleGrid);
+        final GridView gridView = (GridView) findViewById(R.id.battleGrid);
         final ImageAdapter imageAdapterPlayer = new ImageAdapter(this);
         gridView.setAdapter(imageAdapterPlayer);
+        final List<Integer> bluetoothBuffer = new ArrayList<>();
+Observer bluetoothObserver = new Observer() {
+    @Override
+    public void update(Observable observable, Object data) {
+        bluetoothBuffer.add(bluetoothControl.getNextData());
+    }
+};
 
         infoText.setText("Aby rozpocząć dotknj planszę");
-
+        bluetoothControl = BluetoothControl.getBluetoothControl();
+        bluetoothControl.setObserver(bluetoothObserver);
 //////////////////////////////////////////// Trzeba ustalić czyja jest tura ////////////////////////////////////////////////////
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener()
@@ -53,8 +70,10 @@ public class BattleActivity extends AppCompatActivity {
                         myMove(v,position);
                 }
             }
+
         });
     }
+
 
     public void opponentMove()
     {
@@ -63,6 +82,10 @@ public class BattleActivity extends AppCompatActivity {
         infoText.setText("Ruch przeciwnika");
         int position=10;////////////////////////////////////////////tymczasowo
 ///////////////////////////////////////// Otrzymanie pozycji///////////////////////////////////////////////////////////////////
+        bluetoothControl.startListening();
+        bluetoothControl.connect();
+        bluetoothControl.getNextData();
+
         if(myMap[position]==2)
         {
 ///////////////////////////////////////// wysłanie trafienia///////////////////////////////////////////////////////////////////
@@ -70,6 +93,8 @@ public class BattleActivity extends AppCompatActivity {
             myShipCounter--;
             //ImageView imageView = (ImageView) v;
             //imageView.setImageResource(mThumbIds[opponentMap[position]]);
+            bluetoothControl.write("Twoja tura".getBytes());
+            bluetoothControl.
             if(myShipCounter==0)
                 endActivity(0);
         }

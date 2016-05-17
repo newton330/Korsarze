@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         User=(TextView) findViewById(R.id.nazwauzytkownika);
 
+
         Intent intent =getIntent();
         String Login;
         //String Login = intent.getStringExtra("login");
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+
     public void onClickUstwienia(View view)
     {
         Intent intent = new Intent(this,SettingsActivity.class);
@@ -47,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void OnClickNewGame(View view) {
-        Intent intent = new Intent(this, ConnectActivity.class);////////////zmiana tymczasowa
+        Intent intent = new Intent(this, PrepareActivity.class);////////////zmiana tymczasowa
         startActivity(intent);
 
     }
