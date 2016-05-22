@@ -8,14 +8,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class BattleEndActivity extends AppCompatActivity {
-    TextView UserStat1;
+public class StatisticsActivity extends AppCompatActivity {
+TextView UserStat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_battle_end);
-
-        UserStat1=(TextView)findViewById(R.id.summaryText);
+        setContentView(R.layout.activity_statistics);
+        UserStat=(TextView)findViewById(R.id.staticsset);
 
 
 
@@ -23,7 +22,7 @@ public class BattleEndActivity extends AppCompatActivity {
 
         String Login;
         //String Login = intent.getStringExtra("login");
-        SharedPreferences sharedPref =getSharedPreferences("NAME", Context.MODE_PRIVATE);
+        SharedPreferences sharedPref =getSharedPreferences("NAME",Context.MODE_PRIVATE);
         Login=sharedPref.getString("NAME","");
 
         String statystykiwygr;
@@ -31,20 +30,13 @@ public class BattleEndActivity extends AppCompatActivity {
         statystykiwygr=sharedPref.getString("winsstring","");
         statystykiprzegr=sharedPref.getString("winsstring","");
         if(Login==""){
-            UserStat1.setText("Zaloguj się!!! ");}
+            UserStat.setText("Zaloguj się!!! ");}
         else
-            UserStat1.setText("Twoje statystyki piracie:\nStatystyki przgrane"+statystykiprzegr+"\nStatystyki wygrane"+statystykiwygr+".");
+            UserStat.setText("Twoje statystyki piracie:\nStatystyki przgrane"+statystykiprzegr+"\nStatystyki wygrane"+statystykiwygr+".");
     }
 
-    public void OnClickEnd(View view)
-    {
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
-    }
-
-    public void OnClickReplay(View view)
-    {
-        Intent intent = new Intent(this,PrepareActivity.class);
+    public void BackSettings(View view) {
+        Intent intent = new Intent(this,SettingsActivity.class);
         startActivity(intent);
     }
 }

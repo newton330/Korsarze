@@ -1,6 +1,8 @@
 package com.example.newto.korsarze;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,7 +29,10 @@ public class BattleActivity extends AppCompatActivity {
     int opponentShipCounter=20;
     int myTurn=0;
     int tarfienie=0;
-BluetoothControl bluetoothControl;
+    int wins=0;//Przekazywane do statystyk
+    int loss=0;//Przekazywane do statystyk
+    //Trzeba inkrementować po wygranej
+//BluetoothControl bluetoothControl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,22 +44,22 @@ BluetoothControl bluetoothControl;
        int liczba =  Integer.getInteger("1");
         for (int i =0;i<100;i++)
             opponentMap[i]=4;
-bluetoothControl.write((""position+"").getBytes());
+//bluetoothControl.write((""position+"").getBytes());
 
         final GridView gridView = (GridView) findViewById(R.id.battleGrid);
         final ImageAdapter imageAdapterPlayer = new ImageAdapter(this);
         gridView.setAdapter(imageAdapterPlayer);
         final List<Integer> bluetoothBuffer = new ArrayList<>();
-Observer bluetoothObserver = new Observer() {
-    @Override
-    public void update(Observable observable, Object data) {
-        bluetoothBuffer.add(bluetoothControl.getNextData());
-    }
-};
+//        Observer bluetoothObserver = new Observer() {
+//    @Override
+//    public void update(Observable observable, Object data) {
+//        bluetoothBuffer.add(bluetoothControl.getNextData());
+//    }
+//};
 
         infoText.setText("Aby rozpocząć dotknj planszę");
-        bluetoothControl = BluetoothControl.getBluetoothControl();
-        bluetoothControl.setObserver(bluetoothObserver);
+       // bluetoothControl = BluetoothControl.getBluetoothControl();
+       // bluetoothControl.setObserver(bluetoothObserver);
 //////////////////////////////////////////// Trzeba ustalić czyja jest tura ////////////////////////////////////////////////////
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener()
@@ -82,9 +87,9 @@ Observer bluetoothObserver = new Observer() {
         infoText.setText("Ruch przeciwnika");
         int position=10;////////////////////////////////////////////tymczasowo
 ///////////////////////////////////////// Otrzymanie pozycji///////////////////////////////////////////////////////////////////
-        bluetoothControl.startListening();
-        bluetoothControl.connect();
-        bluetoothControl.getNextData();
+        //bluetoothControl.startListening();
+        //bluetoothControl.connect();
+        //bluetoothControl.getNextData();
 
         if(myMap[position]==2)
         {
@@ -93,8 +98,8 @@ Observer bluetoothObserver = new Observer() {
             myShipCounter--;
             //ImageView imageView = (ImageView) v;
             //imageView.setImageResource(mThumbIds[opponentMap[position]]);
-            bluetoothControl.write("Twoja tura".getBytes());
-            bluetoothControl.
+          //  bluetoothControl.write("Twoja tura".getBytes());
+          //  bluetoothControl.
             if(myShipCounter==0)
                 endActivity(0);
         }
@@ -174,7 +179,19 @@ Observer bluetoothObserver = new Observer() {
 
     public void endActivity(int win)
     {
+        ///////////////////////zapisywanie do statystyk//////////////////////
+        String winsstring=Integer.toString(wins);
+        String lossstring=Integer.toString(loss);
+        SharedPreferences sharedPreferences = getSharedPreferences("winsstring", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("winsstring",winsstring);
+        editor.putString("lossstring",lossstring);
+        editor.commit();
+
+
         Intent intent = new Intent(this,BattleEndActivity.class);
+        intent.putExtra("winsstring",winsstring);//Pamiętaj o usunięciu testowych wartosci w LoginActivity
+        intent.putExtra("lossstring",lossstring);//Pamiętaj o usunięciu testowych wartosci w LoginActivity
         startActivity(intent);
     }
 }

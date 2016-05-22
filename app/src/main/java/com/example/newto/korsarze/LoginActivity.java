@@ -32,12 +32,27 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("NAME",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("NAME",name);
+        //////////////////////Testowanie przekazywania do zmiennych/////////////////////////////
+        int wins=10;///Do usunięcia gdy w BattleActivity będą wartości przkazywane
+        int loss=5;//Do usunięcia gdy w BattleActivity będą wartości przkazywane
+
+        String winsstring=Integer.toString(wins);///Do usunięcia gdy w BattleActivity będą wartości przkazywane
+        String lossstring=Integer.toString(loss);//Do usunięcia gdy w BattleActivity będą wartości przkazywane
+        editor.putString("winsstring",winsstring);///Do usunięcia gdy w BattleActivity będą wartości przkazywane
+        editor.putString("lossstring",lossstring);//Do usunięcia gdy w BattleActivity będą wartości przkazywane
+
             editor.commit();
 
 
 
 
+
+
         Intent intent = new Intent(this,MainActivity.class);
+        ////Testowanie
+        intent.putExtra("winsstring",winsstring);//Do usunięcia gdy w BattleActivity będą wartości przkazywane
+        intent.putExtra("lossstring",lossstring);//Do usunięcia gdy w BattleActivity będą wartości przkazywane
+        //////////////////////////////////////
         intent.putExtra("login",name);
         startActivity(intent);
     }

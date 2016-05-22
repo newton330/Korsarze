@@ -49,8 +49,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void OnClickNewGame(View view) {
+        User=(TextView) findViewById(R.id.nazwauzytkownika);
+
+        String Login;
+        //String Login = intent.getStringExtra("login");
+        SharedPreferences sharedPref =getSharedPreferences("NAME",Context.MODE_PRIVATE);
+        Login=sharedPref.getString("NAME","");
+        if(Login=="")/////////////////////Trzeba się zalogować aby rozpocząć grę!!!!!!!
+        {
+            User.setText("Nie rozpocznę gry. Zaloguj się!!! ");}
+        else
+        {User.setText(""+Login+". Czas zatopić parę statków");
+
         Intent intent = new Intent(this, PrepareActivity.class);////////////zmiana tymczasowa
-        startActivity(intent);
+        startActivity(intent);}
 
     }
 }
