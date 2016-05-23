@@ -9,55 +9,42 @@ import android.view.View;
 import android.widget.TextView;
 
 public class StatisticsActivity extends AppCompatActivity {
-TextView UserStat;
+    TextView UserStat;
     int wins;
     int loss;
-    int myShipCounter2;
-    int opponentShipCounter2;
+    int myShipAll;
+    int opponentShipAll;
+    String Login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics);
         UserStat=(TextView)findViewById(R.id.staticsset);
 
-        Bundle myShipCounter1 = getIntent().getExtras();
-        Bundle opponentShipCounter1 = getIntent().getExtras();
-        myShipCounter2 =myShipCounter1 .getInt("myShipCounter");
-        opponentShipCounter2 =opponentShipCounter1 .getInt("opponentShipCounter");
+        SharedPreferences sharedPref = getSharedPreferences("NAME", Context.MODE_PRIVATE);
+        Login = sharedPref.getString("NAME", "");String statystykiwygr;
+        String statystykiprzegr;
+        String myShipAllS, opponentShipAllS;
+        statystykiwygr = sharedPref.getString("winsstring", "");
+        statystykiprzegr = sharedPref.getString("lossstring", "");
+        myShipAllS = sharedPref.getString("myShips", "");
+        opponentShipAllS = sharedPref.getString("opShips", "");
 
-       Intent intent =getIntent();
-if(((myShipCounter2)-20)>(opponentShipCounter2-20)){
-    wins+=1;
-}
-        else
-{
-    loss+=1;
-}
+        if(statystykiwygr=="")
+            statystykiwygr="0";
+        if(statystykiprzegr=="")
+            statystykiprzegr="0";
+        if(myShipAllS=="")
+            myShipAllS="0";
+        if(opponentShipAllS=="")
+            opponentShipAllS="0";
 
-        String winsstring=Integer.toString(wins);
-        String lossstring=Integer.toString(loss);
-        SharedPreferences sharedPreferences = getSharedPreferences("winsstring", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("winsstring",winsstring);
-        editor.putString("lossstring",lossstring);
-        editor.commit();
+        wins = Integer.parseInt(statystykiwygr);
+        loss = Integer.parseInt(statystykiprzegr);
+        myShipAll = Integer.parseInt(myShipAllS);
+        opponentShipAll = Integer.parseInt(opponentShipAllS);
 
-
-        ///Wyswietlanie trzeba zrobic
-
-//        String Login;
-//        //String Login = intent.getStringExtra("login");
-//        SharedPreferences sharedPref =getSharedPreferences("NAME",Context.MODE_PRIVATE);
-//        Login=sharedPref.getString("NAME","");
-//
-//        String statystykiwygr;
-//        String statystykiprzegr;
-//        statystykiwygr=sharedPref.getString("winsstring","");
-//        statystykiprzegr=sharedPref.getString("lossstring","");
-//        if(Login==""){
-//            UserStat.setText("Zaloguj się!!! ");}
-//        else
-//            UserStat.setText("Twoje statystyki piracie:\nStatystyki przgrane"+statystykiprzegr+"\nStatystyki wygrane"+statystykiwygr+".");
+        UserStat.setText("Zwycięstwa: "+wins+"\nPorażki: "+loss+"\nZatopienia (łącznie): "+opponentShipAll+"Straty (łącznie): "+myShipAll);
     }
 
     public void BackSettings(View view) {

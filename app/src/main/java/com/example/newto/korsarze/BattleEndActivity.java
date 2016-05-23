@@ -32,7 +32,6 @@ public class BattleEndActivity extends AppCompatActivity {
 
         SharedPreferences sharedPref = getSharedPreferences("NAME", Context.MODE_PRIVATE);
         Login = sharedPref.getString("NAME", "");
-
         String statystykiwygr;
         String statystykiprzegr;
         String myShipAllS, opponentShipAllS;
@@ -40,6 +39,15 @@ public class BattleEndActivity extends AppCompatActivity {
         statystykiprzegr = sharedPref.getString("lossstring", "");
         myShipAllS = sharedPref.getString("myShips", "");
         opponentShipAllS = sharedPref.getString("opShips", "");
+
+        if(statystykiwygr=="")
+            statystykiwygr="0";
+        if(statystykiprzegr=="")
+            statystykiprzegr="0";
+        if(myShipAllS=="")
+            myShipAllS="0";
+        if(opponentShipAllS=="")
+            opponentShipAllS="0";
 
         wins = Integer.parseInt(statystykiwygr);
         loss = Integer.parseInt(statystykiprzegr);
@@ -65,7 +73,6 @@ public class BattleEndActivity extends AppCompatActivity {
         editor.putString("myShips",Integer.toString(myShipAll));
         editor.putString("opShips",Integer.toString(opponentShipAll));
         editor.commit();
-
     }
 
     public void OnClickEnd(View view)
