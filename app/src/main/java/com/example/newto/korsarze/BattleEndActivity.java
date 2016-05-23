@@ -27,21 +27,26 @@ public class BattleEndActivity extends AppCompatActivity {
         summaryTitle = (TextView) findViewById(R.id.summaryTitle);
         Bundle myShipCounter1 = getIntent().getExtras();
         Bundle opponentShipCounter1 = getIntent().getExtras();
-        myShipCounter = myShipCounter1.getInt("myShipCounter");
-        opponentShipCounter = opponentShipCounter1.getInt("opponentShipCounter");
+        myShipCounter = 20-myShipCounter1.getInt("myShipCounter");
+        opponentShipCounter =20-opponentShipCounter1.getInt("opponentShipCounter");
 
         SharedPreferences sharedPref = getSharedPreferences("NAME", Context.MODE_PRIVATE);
         Login = sharedPref.getString("NAME", "");
 
         String statystykiwygr;
         String statystykiprzegr;
+        String myShipAllS, opponentShipAllS;
         statystykiwygr = sharedPref.getString("winsstring", "");
         statystykiprzegr = sharedPref.getString("lossstring", "");
+        myShipAllS = sharedPref.getString("myShips", "");
+        opponentShipAllS = sharedPref.getString("opShips", "");
 
         wins = Integer.parseInt(statystykiwygr);
         loss = Integer.parseInt(statystykiprzegr);
+        myShipAll = Integer.parseInt(myShipAllS) + myShipCounter;
+        opponentShipAll = Integer.parseInt(opponentShipAllS) + opponentShipCounter;
 
-        if (myShipCounter > opponentShipCounter)
+        if (myShipCounter < opponentShipCounter)
         {
             wins += 1;
             summaryTitle.setText("Zwycięstwo");
