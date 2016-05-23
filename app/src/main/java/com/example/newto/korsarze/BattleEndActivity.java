@@ -68,7 +68,7 @@ public class BattleEndActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences("NAME", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("NAME",Login);
+        editor.putString("NAME",Login);//
         editor.putString("winsstring",Integer.toString(wins));
         editor.putString("lossstring",Integer.toString(loss));
         editor.putString("myShips",Integer.toString(myShipAll));
