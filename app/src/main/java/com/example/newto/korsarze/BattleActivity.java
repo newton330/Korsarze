@@ -166,6 +166,8 @@ public class BattleActivity extends AppCompatActivity {
         Intent intent1 = new Intent(getApplicationContext(), BattleActivity.class);
         Bundle myShipCounter1 =  new Bundle();
         Bundle opponentShipCounter1 =  new Bundle();
+        myShipCounter = 5;
+        opponentShipCounter = 0;
         myShipCounter1.putInt("myShipCounter",myShipCounter);
         opponentShipCounter1.putInt("opponentShipCounter",opponentShipCounter);
         intent1.putExtras(myShipCounter1);
