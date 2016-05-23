@@ -31,9 +31,6 @@ public class BattleActivity extends AppCompatActivity {
     int opponentShipCounter=20;
     int myTurn=0;
     int tarfienie=0;
-    int wins=0;//Przekazywane do statystyk
-    int loss=0;//Przekazywane do statystyk
-    //Trzeba inkrementować po wygranej
     BluetoothControl bluetoothControl;
 
     @Override
@@ -43,25 +40,28 @@ public class BattleActivity extends AppCompatActivity {
         infoText=(TextView) findViewById(R.id.battleInfoText);
         buttonText=(Button) findViewById(R.id.fireButton);
         buttonText.setText("Wyjście");
+
         for (int i =0;i<100;i++)
             opponentMap[i]=4;
+
         Bundle bundle = getIntent().getExtras();
         myMap = bundle.getIntArray("myMap");
 
-        final GridView gridView = (GridView) findViewById(R.id.battleGrid);
+        GridView gridView = (GridView) findViewById(R.id.battleGrid);
         final ImageAdapterOpponent imageAdapterOpponent = new ImageAdapterOpponent(this);
         gridView.setAdapter(imageAdapterOpponent);
         final List<Integer> bluetoothBuffer = new ArrayList<>();
 
-        Observer bluetoothObserver = new Observer() {
+        Observer bluetoothObserver = new Observer() ///////////////////////////////////////////
+        {
             @Override
             public void update(Observable observable, Object data) {
                 bluetoothBuffer.add(bluetoothControl.getNextData());
             }
         };
 
-        bluetoothControl = BluetoothControl.getBluetoothControl();
-        bluetoothControl.setObserver(bluetoothObserver);
+        bluetoothControl = BluetoothControl.getBluetoothControl();//////////////////////////
+        bluetoothControl.setObserver(bluetoothObserver);/////////////////////////
 
         int myRand = 0;
         int opRand = 0;
@@ -70,8 +70,9 @@ public class BattleActivity extends AppCompatActivity {
         while(myRand==opRand)
         {
             myRand = rand.nextInt();
-            bluetoothControl.write((myRand+"").getBytes());
-            opRand = bluetoothControl.getNextData();
+            bluetoothControl.write((myRand+"").getBytes());////////////////////
+            bluetoothControl.startListening();////////////////////////
+            opRand = bluetoothControl.getNextData();//////////////////////
             if(myRand>opRand)
                 myTurn=1;
             if(myRand<opRand)
@@ -84,44 +85,36 @@ public class BattleActivity extends AppCompatActivity {
             {
                 if(myTurn!=-1)
                 {
-                    showShips(v);
                     if (myTurn == 0)
                         opponentMove();
                     else
                         myMove(v,position);
                 }
             }
-
         });
     }
 
     public void opponentMove()
     {
-        //showShips(v);
         myTurn=-1;
         infoText.setText("Ruch przeciwnika");
-        int position=10;////////////////////////////////////////////tymczasowo
-///////////////////////////////////////// Otrzymanie pozycji///////////////////////////////////////////////////////////////////
-        //bluetoothControl.startListening();
-        //bluetoothControl.connect();
-        //bluetoothControl.getNextData();
-
+        int position;
+        bluetoothControl.startListening();/////////////////
+        position= bluetoothControl.getNextData();//////////////////
         if(myMap[position]==2)
         {
-///////////////////////////////////////// wysłanie trafienia///////////////////////////////////////////////////////////////////
+            bluetoothControl.write("1".getBytes());
             myMap[position]=3;
             myShipCounter--;
-          //  bluetoothControl.write("Twoja tura".getBytes());
-          //  bluetoothControl.
             if(myShipCounter==0)
                 endActivity(0);
+            else
+                opponentMove();
         }
         else
         {
-///////////////////////////////////////// wysłanie trafienia///////////////////////////////////////////////////////////////////
+            bluetoothControl.write("0".getBytes());
             myMap[position] = 1;
-            //ImageView imageView = (ImageView) v;
-            //imageView.setImageResource(mThumbIds[opponentMap[position]]);
             infoText.setText("Twój ruch");
             myTurn = 1;
         }
@@ -129,12 +122,13 @@ public class BattleActivity extends AppCompatActivity {
 
     public void myMove(View v,int position)
     {
-        showShips(v);
         myTurn=-1;
         infoText.setText("Twój ruch");
         if(opponentMap[position]==4)
         {
-//////////////////////////////////////////Wysłanie pozycji//// Otrzymanie trafienia ////////////////////////////////////////////
+            bluetoothControl.write((position+"").getBytes());//////////////////////
+            bluetoothControl.startListening();/////////////////
+            position= bluetoothControl.getNextData();//////////////////
             if(tarfienie==1)
             {
                 opponentMap[position]=3;
@@ -162,24 +156,6 @@ public class BattleActivity extends AppCompatActivity {
         }
     }
 
-    public void showShips(View v)
-    {
-        if(myTurn==0)
-            for (int i =0;i<100;i++)
-            {
-                ImageView imageView = (ImageView) v;
-                imageView.setImageResource(mThumbIds[opponentMap[i]]);
-            }
-        else
-            for (int i =0;i<100;i++)
-            {
-                ImageView imageView = (ImageView) v;
-                imageView.setImageResource(mThumbIds[myMap[i]]);
-            }
-
-        //Toast.makeText(PrepareActivity.this,Integer.toString(position),Toast.LENGTH_SHORT).show();
-    }
-
     public Integer[] mThumbIds = new Integer[]{
             R.drawable.water, R.drawable.water, R.drawable.ship, R.drawable.hit, R.drawable.unknown
     };
@@ -202,19 +178,8 @@ public class BattleActivity extends AppCompatActivity {
         intent1.putExtras(myShipCounter1);
         intent1.putExtras(opponentShipCounter1);
         startActivity(intent1);
-        ///////////////////////zapisywanie do statystyk//////////////////////
-//        String winsstring=Integer.toString(wins);
-//        String lossstring=Integer.toString(loss);
-//        SharedPreferences sharedPreferences = getSharedPreferences("winsstring", Context.MODE_PRIVATE);
-//        SharedPreferences.Editor editor = sharedPreferences.edit();
-//        editor.putString("winsstring",winsstring);
-//        editor.putString("lossstring",lossstring);
-//        editor.commit();
-
 
         Intent intent = new Intent(this,BattleEndActivity.class);
-//        intent.putExtra("winsstring",winsstring);//Pamiętaj o usunięciu testowych wartosci w LoginActivity
-//        intent.putExtra("lossstring",lossstring);//Pamiętaj o usunięciu testowych wartosci w LoginActivity
         startActivity(intent);
     }
 }
