@@ -97,7 +97,7 @@ public class BattleActivity extends AppCompatActivity {
     public void opponentMove()
     {
         myTurn=-1;
-        infoText.setText("Ruch przeciwnika");
+        infoText.setText("Ruch przeciwnika\n"+"Masz jeszcze "+myShipCounter+" statków");
         int position;
         bluetoothControl.startListening();/////////////////
         position= bluetoothControl.getNextData();//////////////////
@@ -115,7 +115,7 @@ public class BattleActivity extends AppCompatActivity {
         {
             bluetoothControl.write("0".getBytes());
             myMap[position] = 1;
-            infoText.setText("Twój ruch");
+            infoText.setText("Twój ruch\n"+"Masz jeszcze "+myShipCounter+" statków");
             myTurn = 1;
         }
     }
