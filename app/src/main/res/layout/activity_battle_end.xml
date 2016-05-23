@@ -26,7 +26,8 @@
         android:text="Podsumowanie"
         android:id="@+id/summaryTitle"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textSize="40sp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -35,7 +36,8 @@
         android:text="TODO"
         android:id="@+id/summaryText"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"/>
 
     <Button
         android:layout_width="wrap_content"

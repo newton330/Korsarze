@@ -44,7 +44,7 @@ public class StatisticsActivity extends AppCompatActivity {
         myShipAll = Integer.parseInt(myShipAllS);
         opponentShipAll = Integer.parseInt(opponentShipAllS);
 
-        UserStat.setText("Zwycięstwa: "+wins+"\nPorażki: "+loss+"\nZatopienia (łącznie): "+opponentShipAll+"Straty (łącznie): "+myShipAll);
+        UserStat.setText("Zwycięstwa: "+wins+"\nPorażki: "+loss+"\nZatopienia (łącznie): "+opponentShipAll+"\nStraty (łącznie): "+myShipAll);
     }
 
     public void BackSettings(View view) {

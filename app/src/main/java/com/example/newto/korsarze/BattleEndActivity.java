@@ -64,7 +64,7 @@ public class BattleEndActivity extends AppCompatActivity {
             loss += 1;
             summaryTitle.setText("Porażka");
         }
-        UserStat.setText("Zatopienia: "+opponentShipCounter+"\nStraty: "+myShipCounter+"\n\nZwycięstwa: "+wins+"\nPorażki: "+loss+"\nZatopienia (łącznie): "+opponentShipAll+"Straty (łącznie): "+myShipAll);
+        UserStat.setText(Login+"\n\nZatopienia: "+opponentShipCounter+"\nStraty: "+myShipCounter+"\n\nZwycięstwa: "+wins+"\nPorażki: "+loss+"\nZatopienia (łącznie): "+opponentShipAll+"\nStraty (łącznie): "+myShipAll);
 
         SharedPreferences sharedPreferences = getSharedPreferences("winsstring", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
