@@ -169,7 +169,6 @@ public class BattleActivity extends AppCompatActivity {
 
     public void endActivity(int win)
     {
-
         Intent intent1 = new Intent(getApplicationContext(), BattleActivity.class);
         Bundle myShipCounter1 =  new Bundle();
         Bundle opponentShipCounter1 =  new Bundle();

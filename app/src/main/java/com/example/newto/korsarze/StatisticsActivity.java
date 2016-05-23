@@ -35,15 +35,13 @@ if(((myShipCounter2)-20)>(opponentShipCounter2-20)){
 }
 
         String winsstring=Integer.toString(wins);
-      String lossstring=Integer.toString(loss);
+        String lossstring=Integer.toString(loss);
         SharedPreferences sharedPreferences = getSharedPreferences("winsstring", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("winsstring",winsstring);
         editor.putString("lossstring",lossstring);
         editor.commit();
 
-        intent.putExtra("winsstring",winsstring);
-        intent.putExtra("lossstring",lossstring);
 
         ///Wyswietlanie trzeba zrobic
 
