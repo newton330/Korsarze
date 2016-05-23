@@ -163,8 +163,18 @@ public class BattleActivity extends AppCompatActivity {
     public void OnClickFire(View view)
     {
 
+        Intent intent1 = new Intent(getApplicationContext(), BattleActivity.class);
+        Bundle myShipCounter1 =  new Bundle();
+        Bundle opponentShipCounter1 =  new Bundle();
+        myShipCounter1.putInt("myShipCounter",myShipCounter);
+        opponentShipCounter1.putInt("opponentShipCounter",opponentShipCounter);
+        intent1.putExtras(myShipCounter1);
+        intent1.putExtras(opponentShipCounter1);
+        startActivity(intent1);
+
         Intent intent = new Intent(this,BattleEndActivity.class);
         startActivity(intent);
+
     }
 
     public void endActivity(int win)
