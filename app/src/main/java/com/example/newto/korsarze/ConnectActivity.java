@@ -179,4 +179,7 @@ public class ConnectActivity extends AppCompatActivity {
         bluetoothAdapter.cancelDiscovery();//nie testowane, ale warto żeby było
     }
 
-}
+    public void Graj(View view) {
+        Intent intent = new Intent(this, PrepareActivity.class);////////////zmiana tymczasowa
+        startActivity(intent);}
+    }

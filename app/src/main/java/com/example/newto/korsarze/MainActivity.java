@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         Login=sharedPref.getString("NAME","");
         if(Login=="")
            Login="Pirat";
-        Intent intent = new Intent(this, PrepareActivity.class);////////////zmiana tymczasowa
+        Intent intent = new Intent(this, ConnectActivity.class);////////////zmiana tymczasowa
         startActivity(intent);}
 
     }
