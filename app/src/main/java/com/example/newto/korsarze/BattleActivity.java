@@ -193,19 +193,28 @@ public class BattleActivity extends AppCompatActivity {
 
     public void endActivity(int win)
     {
+
+        Intent intent1 = new Intent(getApplicationContext(), BattleActivity.class);
+        Bundle myShipCounter1 =  new Bundle();
+        Bundle opponentShipCounter1 =  new Bundle();
+        myShipCounter1.putInt("myShipCounter",myShipCounter);
+        opponentShipCounter1.putInt("opponentShipCounter",opponentShipCounter);
+        intent1.putExtras(myShipCounter1);
+        intent1.putExtras(opponentShipCounter1);
+        startActivity(intent1);
         ///////////////////////zapisywanie do statystyk//////////////////////
-        String winsstring=Integer.toString(wins);
-        String lossstring=Integer.toString(loss);
-        SharedPreferences sharedPreferences = getSharedPreferences("winsstring", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("winsstring",winsstring);
-        editor.putString("lossstring",lossstring);
-        editor.commit();
+//        String winsstring=Integer.toString(wins);
+//        String lossstring=Integer.toString(loss);
+//        SharedPreferences sharedPreferences = getSharedPreferences("winsstring", Context.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putString("winsstring",winsstring);
+//        editor.putString("lossstring",lossstring);
+//        editor.commit();
 
 
         Intent intent = new Intent(this,BattleEndActivity.class);
-        intent.putExtra("winsstring",winsstring);//Pamiętaj o usunięciu testowych wartosci w LoginActivity
-        intent.putExtra("lossstring",lossstring);//Pamiętaj o usunięciu testowych wartosci w LoginActivity
+//        intent.putExtra("winsstring",winsstring);//Pamiętaj o usunięciu testowych wartosci w LoginActivity
+//        intent.putExtra("lossstring",lossstring);//Pamiętaj o usunięciu testowych wartosci w LoginActivity
         startActivity(intent);
     }
 }
