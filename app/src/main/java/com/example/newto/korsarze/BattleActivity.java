@@ -14,11 +14,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.newto.korsarze.bluetooth.BluetoothControl;
+import com.example.newto.korsarze.bluetooth.BluetoothDeviceDataStructure;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Random;
 
 public class BattleActivity extends AppCompatActivity {
     TextView infoText;
@@ -32,7 +34,7 @@ public class BattleActivity extends AppCompatActivity {
     int wins=0;//Przekazywane do statystyk
     int loss=0;//Przekazywane do statystyk
     //Trzeba inkrementować po wygranej
-//BluetoothControl bluetoothControl;
+    BluetoothControl bluetoothControl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,26 +43,40 @@ public class BattleActivity extends AppCompatActivity {
         infoText=(TextView) findViewById(R.id.battleInfoText);
         buttonText=(Button) findViewById(R.id.fireButton);
         buttonText.setText("Wyjście");
-       int liczba =  Integer.getInteger("1");
         for (int i =0;i<100;i++)
             opponentMap[i]=4;
-//bluetoothControl.write((""position+"").getBytes());
+        Bundle bundle = getIntent().getExtras();
+        myMap = bundle.getIntArray("myMap");
 
         final GridView gridView = (GridView) findViewById(R.id.battleGrid);
-        final ImageAdapter imageAdapterPlayer = new ImageAdapter(this);
-        gridView.setAdapter(imageAdapterPlayer);
+        final ImageAdapterOpponent imageAdapterOpponent = new ImageAdapterOpponent(this);
+        gridView.setAdapter(imageAdapterOpponent);
         final List<Integer> bluetoothBuffer = new ArrayList<>();
-//        Observer bluetoothObserver = new Observer() {
-//    @Override
-//    public void update(Observable observable, Object data) {
-//        bluetoothBuffer.add(bluetoothControl.getNextData());
-//    }
-//};
 
+        Observer bluetoothObserver = new Observer() {
+            @Override
+            public void update(Observable observable, Object data) {
+                bluetoothBuffer.add(bluetoothControl.getNextData());
+            }
+        };
+
+        bluetoothControl = BluetoothControl.getBluetoothControl();
+        bluetoothControl.setObserver(bluetoothObserver);
+
+        int myRand = 0;
+        int opRand = 0;
+        Random rand = new Random();
         infoText.setText("Aby rozpocząć dotknj planszę");
-       // bluetoothControl = BluetoothControl.getBluetoothControl();
-       // bluetoothControl.setObserver(bluetoothObserver);
-//////////////////////////////////////////// Trzeba ustalić czyja jest tura ////////////////////////////////////////////////////
+        while(myRand==opRand)
+        {
+            myRand = rand.nextInt();
+            bluetoothControl.write((myRand+"").getBytes());
+            opRand = bluetoothControl.getNextData();
+            if(myRand>opRand)
+                myTurn=1;
+            if(myRand<opRand)
+                myTurn=0;
+        }
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
@@ -79,7 +95,6 @@ public class BattleActivity extends AppCompatActivity {
         });
     }
 
-
     public void opponentMove()
     {
         //showShips(v);
@@ -96,8 +111,6 @@ public class BattleActivity extends AppCompatActivity {
 ///////////////////////////////////////// wysłanie trafienia///////////////////////////////////////////////////////////////////
             myMap[position]=3;
             myShipCounter--;
-            //ImageView imageView = (ImageView) v;
-            //imageView.setImageResource(mThumbIds[opponentMap[position]]);
           //  bluetoothControl.write("Twoja tura".getBytes());
           //  bluetoothControl.
             if(myShipCounter==0)
@@ -173,6 +186,7 @@ public class BattleActivity extends AppCompatActivity {
 
     public void OnClickFire(View view)
     {
+
         Intent intent = new Intent(this,BattleEndActivity.class);
         startActivity(intent);
     }

@@ -1,19 +1,19 @@
 package com.example.newto.korsarze;
 
-        import android.content.Context;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.BaseAdapter;
-        import android.widget.GridView;
-        import android.widget.ImageView;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
 
-        import com.example.newto.korsarze.R;
+import com.example.newto.korsarze.R;
 
 
-public class ImageAdapter extends BaseAdapter {
+public class ImageAdapterOpponent extends BaseAdapter {
     public Context mContext;
 
-    public ImageAdapter(Context c) {
+    public ImageAdapterOpponent(Context c) {
         mContext = c;
     }
 
@@ -42,7 +42,7 @@ public class ImageAdapter extends BaseAdapter {
         {
             imageView = (ImageView) convertView;
         }
-        imageView.setImageResource(mThumbIds[0]);
+        imageView.setImageResource(mThumbIds[4]);
         return imageView;
     }
 

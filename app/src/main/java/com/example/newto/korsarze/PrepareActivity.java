@@ -20,9 +20,10 @@ public class PrepareActivity extends AppCompatActivity {
         for (int i =0;i<100;i++)
             map[i]=0;
 
-        GridView gridView = (GridView) findViewById(R.id.prepareGrid);
+        final GridView gridView = (GridView) findViewById(R.id.prepareGrid);
         final ImageAdapter imageAdapterPlayer = new ImageAdapter(this);
         gridView.setAdapter(imageAdapterPlayer);
+
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id){
@@ -49,7 +50,10 @@ public class PrepareActivity extends AppCompatActivity {
     {
         if (clickNumber == 20)
         {
-            Intent intent = new Intent(this, BattleActivity.class);
+            Intent intent = new Intent(getApplicationContext(), BattleActivity.class);
+            Bundle bundle =  new Bundle();
+            bundle.putIntArray("myMap",map);
+            intent.putExtras(bundle);
             startActivity(intent);
         }
         else

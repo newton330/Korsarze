@@ -28,7 +28,7 @@ TextView UserStat;
         String statystykiwygr;
         String statystykiprzegr;
         statystykiwygr=sharedPref.getString("winsstring","");
-        statystykiprzegr=sharedPref.getString("winsstring","");
+        statystykiprzegr=sharedPref.getString("lossstring","");
         if(Login==""){
             UserStat.setText("Zaloguj się!!! ");}
         else
