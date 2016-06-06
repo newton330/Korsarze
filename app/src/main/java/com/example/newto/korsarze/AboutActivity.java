@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Toast;
 
 public class AboutActivity extends AppCompatActivity {
+    //TODO
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
